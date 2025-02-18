@@ -74,6 +74,7 @@ public class UserAuthService {
             var user = (User) userRepository.findByUsername(userAuthRequest.getUsername()).orElseThrow();
             var jwtToken = jwtService.createToken(user);
             return UserAuthResponse.builder()
+                    .username(userAuthRequest.getUsername())
                     .token(jwtToken)
                     .message("Welcome, " + userAuthRequest.getUsername())
                     .role(user.getRole())
