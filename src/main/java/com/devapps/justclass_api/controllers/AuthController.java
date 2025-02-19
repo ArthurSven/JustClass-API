@@ -43,7 +43,8 @@ public class AuthController {
                     .body(UserAuthResponse.builder()
                             .token(null)
                             .message(ex.getReason())
-                            .build());
+                            .build()
+                    );
         }
 
     }
