@@ -5,9 +5,12 @@ import com.devapps.justclass_api.models.student.StudentRequest;
 import com.devapps.justclass_api.models.student.StudentResponse;
 import com.devapps.justclass_api.repositories.StudentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -35,9 +38,36 @@ public class StudentService {
         }
     }
 
-    public List<StudentResponse> getStudentsByTeacher(StudentRequest studentRequest) {
+    public List<StudentResponse> getStudentsByTeacher(String teacher) {
         try {
+            List<Student> students = studentRepository.getStudentsByTeacher(teacher);
+            return students.stream()
+                    .map(student -> StudentResponse.builder()
+                            .studentid(student.getStudentid())
+                            .firstname(student.getFirstname())
+                            .lastname(student.getLastname())
+                            .datejoined(student.getDatejoined())
+                            .teacher(student.getTeacher())
+                            .build())
+                    .toList();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "A problem occurred: " + e.getLocalizedMessage());
+        }
+    }
 
+    public StudentResponse getStudentById(StudentRequest studentRequest) {
+
+        try {
+            var student = (Student) studentRepository.getStudentById(studentRequest.getStudentid()).orElseThrow();
+            return StudentResponse.builder()
+                    .studentid(studentRequest.getStudentid())
+                    .firstname(studentRequest.getFirstname())
+                    .lastname(studentRequest.getLastname())
+                    .datejoined(studentRequest.getDatejoined())
+                    .teacher(studentRequest.getTeacher())
+                    .build();
+        } catch (ResponseStatusException re) {
+            throw new RuntimeException("A problem occured: " + re.getLocalizedMessage());
         }
     }
 }

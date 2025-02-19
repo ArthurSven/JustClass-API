@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentRequest {
-    private String studentid;
+    private UUID studentid;
     private String firstname;
     private String lastname;
     private String datejoined;
@@ -24,11 +26,11 @@ public class StudentRequest {
         this.teacher = teacher;
     }
 
-    public String getStudentid() {
+    public UUID getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(String studentid) {
+    public void setStudentid(UUID studentid) {
         this.studentid = studentid;
     }
 

@@ -17,6 +17,6 @@ public interface StudentRepository extends JpaRepository<Student, UUID> {
     Optional<Student> getStudentById(@Param("studentid") UUID studentid);
 
     @Query("SELECT s FROM Student s WHERE s.teacher = :teacher")
-    List <Student> getStudentsByTeacher(@Param("teacher") String teacher);
+    List<Student> getStudentsByTeacher(@Param("teacher") String teacher);
 
 }

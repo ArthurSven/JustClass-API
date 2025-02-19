@@ -8,16 +8,18 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String studentid;
+    private UUID studentid;
 
     @Column
     private String firstname;
@@ -38,11 +40,11 @@ public class Student {
         datejoined = LocalDateTime.now().format(formatter);
     }
 
-    public String getStudentid() {
+    public UUID getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(String studentid) {
+    public void setStudentid(UUID studentid) {
         this.studentid = studentid;
     }
 

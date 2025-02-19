@@ -8,13 +8,14 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentResponse {
-    private String studentid;
+    private UUID studentid;
     private String firstname;
     private String lastname;
     private String datejoined;
