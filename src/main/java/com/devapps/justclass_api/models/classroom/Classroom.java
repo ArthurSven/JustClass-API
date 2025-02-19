@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
 
@@ -40,6 +43,11 @@ public class Classroom {
 
     @Column
     private String createdby;
+
+    @PrePersist
+    protected void onCreate() {
+        createdate = Date.from(Instant.now());
+    }
 
     public UUID getClassid() {
         return classid;

@@ -4,11 +4,13 @@ import com.devapps.justclass_api.models.classroom.Classroom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, UUID> {
 
     @Query("SELECT c FROM Classroom c WHERE c.level = :level")
