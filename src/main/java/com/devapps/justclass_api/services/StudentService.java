@@ -55,16 +55,18 @@ public class StudentService {
         }
     }
 
-    public StudentResponse getStudentById(StudentRequest studentRequest) {
+    public StudentResponse getStudentById(UUID studentID) {
 
         try {
-            var student = (Student) studentRepository.getStudentById(studentRequest.getStudentid()).orElseThrow();
+            Student student = studentRepository.getStudentById(studentID)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
+
             return StudentResponse.builder()
-                    .studentid(studentRequest.getStudentid())
-                    .firstname(studentRequest.getFirstname())
-                    .lastname(studentRequest.getLastname())
-                    .datejoined(studentRequest.getDatejoined())
-                    .teacher(studentRequest.getTeacher())
+                    .studentid(student.getStudentid())
+                    .firstname(student.getFirstname())
+                    .lastname(student.getLastname())
+                    .datejoined(student.getDatejoined())
+                    .teacher(student.getTeacher())
                     .build();
         } catch (ResponseStatusException re) {
             throw new RuntimeException("A problem occured: " + re.getLocalizedMessage());
