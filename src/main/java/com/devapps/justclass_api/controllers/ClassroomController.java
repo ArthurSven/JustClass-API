@@ -33,7 +33,7 @@ public class ClassroomController {
         }
     }
 
-    @GetMapping("/{createdby}")
+    @GetMapping("by-teacher/{createdby}")
     public ResponseEntity<List<ClassroomResponse>> getClassroomByTeacher(@PathVariable String createdby) {
         try {
             List<ClassroomResponse> classroomResponses = classroomService.getClassroomByTeacher(createdby);
