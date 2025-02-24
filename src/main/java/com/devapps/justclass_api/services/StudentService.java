@@ -26,6 +26,8 @@ public class StudentService {
                     .lastname(studentRequest.getLastname())
                     .datejoined(studentRequest.getDatejoined())
                     .teacher(studentRequest.getTeacher())
+                    .email(studentRequest.getEmail())
+                    .phoneno(studentRequest.getPhoneno())
                     .build();
             studentRepository.save(student);
             return StudentResponse.builder()
@@ -47,6 +49,8 @@ public class StudentService {
                             .firstname(student.getFirstname())
                             .lastname(student.getLastname())
                             .datejoined(student.getDatejoined())
+                            .email(student.getEmail())
+                            .phoneno(student.getPhoneno())
                             .teacher(student.getTeacher())
                             .build())
                     .toList();
@@ -65,6 +69,8 @@ public class StudentService {
                     .studentid(student.getStudentid())
                     .firstname(student.getFirstname())
                     .lastname(student.getLastname())
+                    .email(student.getEmail())
+                    .phoneno(student.getPhoneno())
                     .datejoined(student.getDatejoined())
                     .teacher(student.getTeacher())
                     .build();

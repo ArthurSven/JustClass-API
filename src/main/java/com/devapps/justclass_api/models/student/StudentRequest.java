@@ -16,7 +16,25 @@ public class StudentRequest {
     private String firstname;
     private String lastname;
     private String datejoined;
+    private String email;
+    private String phoneno;
     private String teacher;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneno() {
+        return phoneno;
+    }
+
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
+    }
 
     public String getTeacher() {
         return teacher;

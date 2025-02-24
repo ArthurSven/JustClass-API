@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ClassroomRequest {
-
     private String classname;
     private String level;
     private Date startdate;

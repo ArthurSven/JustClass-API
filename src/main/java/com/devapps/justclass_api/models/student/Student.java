@@ -31,6 +31,12 @@ public class Student {
     private String datejoined;
 
     @Column
+    private String email;
+
+    @Column
+    private String phoneno;
+
+    @Column
     private String teacher;
 
 
@@ -38,6 +44,22 @@ public class Student {
     protected void onCreate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         datejoined = LocalDateTime.now().format(formatter);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneno() {
+        return phoneno;
+    }
+
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
     }
 
     public UUID getStudentid() {

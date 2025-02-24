@@ -18,6 +18,8 @@ public class StudentResponse {
     private UUID studentid;
     private String firstname;
     private String lastname;
+    private String email;
+    private String phoneno;
     private String datejoined;
     private String teacher;
     private String message;
