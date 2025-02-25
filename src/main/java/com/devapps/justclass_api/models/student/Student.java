@@ -40,11 +40,6 @@ public class Student {
     private String teacher;
 
 
-    @PrePersist
-    protected void onCreate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        datejoined = LocalDateTime.now().format(formatter);
-    }
 
     public String getEmail() {
         return email;
